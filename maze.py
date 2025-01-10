@@ -20,6 +20,7 @@ class Maze:
         self._create_cells()
         self._break_entrance_and_exit()
         self._break_walls_r(0, 0)
+        self._reset_visited()
 
     def _create_cells(self):
         self._cells = [
@@ -86,3 +87,8 @@ class Maze:
                 next_i, next_j = random.choice(neighbors)
                 self._break_wall(i, j, next_i, next_j)
                 self._break_walls_r(next_i, next_j)
+
+    def _reset_visited(self):
+        for i in range(self._num_cols):
+            for j in range(self._num_rows):
+                self._cells[i][j].visited = False
